@@ -1,7 +1,7 @@
 /* 
-  You are given a sentence contains a story.
+  Below, you are given a sentence, which contains a story.
 
-  Current it says 
+  Currently, it says: 
 
   "I like dogs. One day I went to the park and I saw 10 dogs. It was a great day."
 
@@ -13,7 +13,23 @@
 let story =
   "I like dogs. One day I went to the park and I saw 10 dogs. It was a great day.";
 
-let result = story.replace("", "");
+// statement completed - autosave formatted the code as below
+
+let result = story
+  .replace("dogs", "cats")
+  .replace("day", "night")
+  .replace(10, 100000)
+  .replace("dogs", "cats")
+  .replace("great", "brilliant")
+  .replace("day", "night");
+
+// alternatively, with some regex, which I searched for, but I do not know about just yet
+
+let resultTwo = story
+  .replace(/dogs/g, "cats")
+  .replace(/day/g, "night")
+  .replace(10, 100000)
+  .replace("great", "brilliant");
 
 /* EXPECTED OUTPUT */
 
@@ -42,5 +58,11 @@ test(
 test(
   "2. The result of the replace is correct",
   result,
+  "I like cats. One night I went to the park and I saw 100000 cats. It was a brilliant night."
+);
+
+test(
+  "2. The result of the replace is correct",
+  resultTwo,
   "I like cats. One night I went to the park and I saw 100000 cats. It was a brilliant night."
 );
