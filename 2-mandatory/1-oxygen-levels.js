@@ -11,7 +11,16 @@
     Some string methods that might help you here are .replace() and .substring(). 
 */
 
-function safeLevels() {}
+function isSafe(number) {
+  number.replace(/%/g, "");
+  return parseFloat(number) > 19.5 && parseFloat(number) < 23.5;
+}
+
+// I had some guidance at this point, as I didn't know I needed another function
+
+function safeLevels(number) {
+  return number.find(isSafe);
+}
 
 /* ======= TESTS - DO NOT MODIFY ===== */
 

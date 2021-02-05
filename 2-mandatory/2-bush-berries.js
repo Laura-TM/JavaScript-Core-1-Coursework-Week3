@@ -8,7 +8,8 @@
   If any other berries are present, it's best not to eat from the bush at all!
 
   Create a function which checks if the bush has ALL PINK berries and is safe for the astronauts to eat from the bush.
-  Use the tests to confirm which message to return
+
+  Use the tests to confirm which message to return.
   
   This exercise can be solved in a few different ways. One way might include the array methods
   .some() and .every(). 
@@ -21,7 +22,18 @@
   Let's first look at an example that will teach you how to use these methods.
 */
 
-function bushChecker() {}
+function isSafe(colour) {
+  let safeBerry = "pink";
+  return colour == safeBerry;
+}
+
+function bushChecker(colour) {
+  if (colour.every(isSafe)) {
+    return "Bush is safe to eat from";
+  } else {
+    return "Toxic! Leave bush alone!";
+  }
+}
 
 /* ======= TESTS - DO NOT MODIFY ===== */
 

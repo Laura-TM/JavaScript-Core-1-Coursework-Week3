@@ -8,14 +8,19 @@
 
   NOTE: don't include any element that is not a "family".
 
-  HINT: Whenever you read the above the instructions, try to come up with the main input and output and logic
+  HINT: Whenever you read the above instructions, try to come up with the main input and output and logic
         Input: Is an array
         Output: Is an array
         Logic: Only strings that start with A, and finish with family
-  
 */
 
-function colonisers() {}
+function isFamily(name) {
+  return name.includes("family") && name[0] == "A";
+}
+
+function colonisers(array) {
+  return array.filter(isFamily);
+}
 
 /* ======= TESTS - DO NOT MODIFY ===== */
 

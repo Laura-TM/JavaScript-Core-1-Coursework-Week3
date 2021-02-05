@@ -1,7 +1,7 @@
 /*
  Before we go the big story; we will introduce more string methods.
  Some of the methods you're using in Array have similar ones with strings.
- Methods like : IndexOf, Include, Search, Slice , Spilt and more.
+ Methods like : IndexOf, Include, Search, Slice, Spilt and more.
  
  You can always google how a method of a string works!
  Here are links to some of those:
@@ -10,8 +10,8 @@
  Now let's do this small exercise
  
  Using string methods update the checkCodeIsThere() function
-  - The function will have a string as a paramter
-  - The function should check if the string has the word "code" exists in the string
+  - The function will have a string as a parameter
+  - The function should check if the string has the word "code" in the string
   - If it does exist, return the index of it, if not return "Not found"
 
  Hint: search for string methods like Includes and IndexOf.
@@ -19,9 +19,9 @@
 
 function checkCodeIsThere(stringText) {
   let magicWord = "code";
-  //edit code below
-  if (stringText) {
-    return stringText;
+  // code below edited
+  if (stringText.includes(magicWord)) {
+    return stringText.indexOf(magicWord);
   } else {
     return "Not found";
   }
@@ -29,30 +29,29 @@ function checkCodeIsThere(stringText) {
 
 /*
   I am new to London and would like to know what transport I can take to different famous locations.
-  The input provided contains a list of locations in London. Each of locations is followed by a list
+  The input provided contains a list of locations in London. Each of the locations is followed by a list
   of transport modes that can be used to get there.
   Let's see an example:
   
-  To take to Tower Bridge, you can use tube or river boat. This information will represented as 
+  To get to Tower Bridge, you can use the tube or the river boat. This information will be represented as 
     ["Tower Bridge", "tube", "river boat"]
 
   Where
-    the 1st element says the name of the location,
-    and rest of them says the transport modes.
+    The 1st element says the name of the location and rest of them say the transport modes.
 
-  You will then get a list of these information, e.g:
+  You will then get a list of this information, e.g:
   [
     ["Tower Bridge", "tube", "river boat"],
     ["Abbey road", "double decker"],
     ["London Eye", "tube", "river boat", "bus"]
   ]
 
-  You have to finish up the body of journeyPlanner function that should tell where I can go if I only
+  At the end of the exercise, you will have to finish up the body of journeyPlanner function that should tell where I can go if I only
   want to use a specific mode of transport. But before jumping straight to the main function, we will
   break down the whole task into smaller steps that make our job easier.
 
   This technic is also referred as "problem decomposition". It helps you to reduce scope of the problem 
-  by only focusing on a small chunk of the whole problem at a time.)
+  by only focusing on a small chunk of the whole problem at a time.
 */
 
 /*
@@ -64,7 +63,11 @@ function checkCodeIsThere(stringText) {
   
   Hint: Use the corresponding array method to split the array.
 */
-function getTransportModes() {}
+
+function getTransportModes(array) {
+  return array.slice(1);
+  // I only provide one part of the slice because sometimes there are more than one mode of transport
+}
 
 /*
   Implement the function isAccessibleByTransportMode that
@@ -81,7 +84,10 @@ function getTransportModes() {}
     
   Hint: Use the corresponding array method to decide if an element is member of an array.
 */
-function isAccessibleByTransportMode() {}
+
+function isAccessibleByTransportMode(array, string) {
+  return array.includes(string);
+}
 
 /*
   Implement the function getLocationName that
@@ -92,7 +98,10 @@ function isAccessibleByTransportMode() {}
    - Returns the name of the location
       e.g: "Tower Bridge"
 */
-function getLocationName() {}
+
+function getLocationName(array) {
+  return array[0];
+}
 
 /*
  We arrived at the final method. it won't take long if you use the previously implemented functions wisely.
@@ -118,12 +127,43 @@ function getLocationName() {}
    - Use the function you implemented above.
    - Use array method to remove locations that is not accessible by the given transportMode.
    - Use array method to manipulate its elements.
-   
+*/
+
+// I had some guidance with this function below
+
+function journeyPlanner(locations, transportMode) {
+  let sortedLocations = [];
+  for (let i = 0; i < locations.length; i++) {
+    // [["Angel", "tube", "bus"], ["London Bridge", "tube", "river boat"], ["Tower Bridge", "tube", "bus"], ["Greenwich", "bus", "river boat"]]
+    let locationArray = locations[i]; // ["Angel", "tube", "bus"]
+    let availableModes = getTransportModes(locationArray); // ["tube", "bus"]
+    let isTransportAvailable = isAccessibleByTransportMode(availableModes, transportMode); // T/F
+    if (isTransportAvailable) {
+      let finalLocation = getLocationName(locationArray);
+      sortedLocations.push(finalLocation);
+    }
+  }
+  return sortedLocations;
+}
+
+/*
   Advanced challange: try to use arrow function when invoking an array method.
 */
-function journeyPlanner(locations, transportMode) {
-  // Implement the function body
-}
+
+// let journeyPlanner = (locations, transportMode) => {
+//   let sortedLocations = [];
+//   for (let i = 0; i < locations.length; i++) {
+//     // [["Angel", "tube", "bus"], ["London Bridge", "tube", "river boat"], ["Tower Bridge", "tube", "bus"], ["Greenwich", "bus", "river boat"]]
+//     let locationArray = locations[i]; // ["Angel", "tube", "bus"]
+//     let availableModes = getTransportModes(locationArray); // ["tube", "bus"]
+//     let isTransportAvailable = isAccessibleByTransportMode(availableModes, transportMode); // T/F
+//     if (isTransportAvailable) {
+//       let finalLocation = getLocationName(locationArray);
+//       sortedLocations.push(finalLocation);
+//     }
+//   }
+//   return sortedLocations;
+// }
 
 /* ======= TESTS - DO NOT MODIFY ===== */
 
