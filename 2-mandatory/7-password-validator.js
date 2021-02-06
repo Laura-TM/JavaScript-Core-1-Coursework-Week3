@@ -40,6 +40,15 @@ function validatePassword(string) {
   }
 }
 
+// Alternatively...
+// function validatePassword(string) {
+//   return !(string.length < 5
+//     || !containsUppercaseLetter(string)
+//     || !containsLowercaseLetter(string)
+//     || !containsNumber(string)
+//     || !containsSymbol(string))
+// }
+
 // I had help with this function
 function validatePasswords(passwords) {
   let newArray = [];

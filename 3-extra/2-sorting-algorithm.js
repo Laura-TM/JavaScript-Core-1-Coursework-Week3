@@ -8,13 +8,31 @@ Create a function called sortAges which:
 - takes an array of mixed data types as input
 - removes any non-number data types without using the built-in javascript filter method
 - returns an array of sorted ages in ascending order 
-  - HARD MODE - without using the built-in javascript sort method 😎
+- HARD MODE - without using the built-in javascript sort method 😎
 
 You don't have to worry about making this algorithm work fast! The idea is to get you to
 "think" like a computer and practice your knowledge of basic JavaScript.
 */
 
-function sortAges(arr) {}
+function sortAges(arr) {
+  let newArr = [];
+  for (let i = 0; i < arr.length; i++) {
+    if (typeof arr[i] == "number") {
+      let num = arr[i];
+      // I had help with this section for sorting the array in ascending order without the .sort() method
+      let length = newArr.length;
+      for (let j = 0; j <= length; j++) {
+        if (j === length || num < newArr[j]) {
+          newArr.splice(j, 0, num);
+          break;
+        }
+      }
+    } else {
+      continue;
+    }
+  }
+  return newArr;
+}
 
 /* ======= TESTS - DO NOT MODIFY ===== */
 
